@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Lab_2 - Var_14</title>
+</head>
+<body>
+    <h2>Заявка в волонтёры</h2>
+
+    <form id="volunteerForm">
+        Имя: <input type="text" name="userName" required><br><br>
+
+        Возраст: <input type="number" name="userAge" required><br><br>
+
+        Направление: 
+        <select name="direction">
+            <option value="Экология">Экология</option>
+            <option value="Помощь детям">Помощь детям</option>
+            <option value="Приюты">Приюты</option>
+        </select><br><br>
+
+        <input type="checkbox" name="hasExperience"> Опыт есть<br><br>
+
+        Вид помощи:<br>
+        <input type="radio" name="helpType" value="Очно" checked> Очно<br>
+        <input type="radio" name="helpType" value="Удаленно"> Удаленно<br><br>
+
+        <button type="submit">Отправить</button>
+    </form>
+
+    <div id="result" style="margin-top: 20px;"></div>
+
+    <script>
+        document.getElementById("volunteerForm").addEventListener("submit", function(e) {
+            e.preventDefault(); 
+
+          
+            const name = this.userName.value;
+            const age = this.userAge.value;
+            const dir = this.direction.value;
+            const exp = this.hasExperience.checked ? "Да" : "Нет";
+            const type = this.helpType.value;
+
+            
+            const info = "<h3>Данные заявки:</h3>" +
+                         "Имя: " + name + "<br>" +
+                         "Возраст: " + age + "<br>" +
+                         "Направление: " + dir + "<br>" +
+                         "Опыт: " + exp + "<br>" +
+                         "Вид помощи: " + type;
+
+                         
+            document.getElementById("result").innerHTML = info;
+        });
+    </script>
+</body>
+</html>
