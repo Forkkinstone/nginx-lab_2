@@ -10,7 +10,7 @@
     <form id="volunteerForm">
         Имя: <input type="text" name="userName" required><br><br>
 
-        Возраст: <input type="number" name="userAge" required><br><br>
+        Возраст: <input type="number" name="userAge" min="7" required><br><br>
 
         Направление: 
         <select name="direction">
@@ -34,14 +34,17 @@
         document.getElementById("volunteerForm").addEventListener("submit", function(e) {
             e.preventDefault(); 
 
-          
             const name = this.userName.value;
             const age = this.userAge.value;
             const dir = this.direction.value;
             const exp = this.hasExperience.checked ? "Да" : "Нет";
             const type = this.helpType.value;
 
-            
+            if (age <= 0) {
+                alert("Возраст должен быть положительным числом!");
+                return;
+            }
+
             const info = "<h3>Данные заявки:</h3>" +
                          "Имя: " + name + "<br>" +
                          "Возраст: " + age + "<br>" +
